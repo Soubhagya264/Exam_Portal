@@ -31,5 +31,9 @@ export class QuizService {
     return this._http.get(`${baseUrl}quiz/${quizId}`);
   }
 
+  // get quizzes of category
+  public getQuizzesOfCategory(catId: any){
+    return this._http.get(`${baseUrl}quiz/category/${catId}`);
+  }
 
 }
