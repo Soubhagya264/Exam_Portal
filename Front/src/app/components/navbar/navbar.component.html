@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <span>Exam Portal</span>
+  <span class="example-spacer"></span>
+  <div style="margin-right: 20px;">
+    <a *ngIf="!isLoggedIn" routerLink="/login" mat-raised-button color="accent">Login</a>
+  </div>
+  <div style="margin-right: 20px;">
+    <a 
+    
+    *ngIf="isLoggedIn && user" routerLink="/admin/profile" style="text-decoration: none; color:white"   color="accent">{{user.username}}</a>
+  </div>
+  
+  <div style="margin-right: 20px;">
+    <a 
+    (click)="logout()"
+    *ngIf="isLoggedIn"  mat-raised-button color="accent">Logout</a>
+  </div>
+  <div style="margin-right: 20px;">
+
+    <a *ngIf="!isLoggedIn" routerLink="/signup" mat-raised-button color="accent">SignUp</a>
+
+  </div>
+
+</mat-toolbar>

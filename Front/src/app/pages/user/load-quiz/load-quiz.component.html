@@ -1,0 +1,36 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <h2 style="margin-top: 10px;">
+            <span>Available Quizzes</span>
+        </h2>
+        <div class="row" style="margin-top: 20px" *ngIf="quizzes">
+            <div class="col-md-4" *ngFor="let q of quizzes">
+                
+
+                <mat-card style="margin-top: 20px">
+
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{q.title}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-subtitle style="margin-top: 5px;">
+                        {{q.category.title}}
+                    </mat-card-subtitle>
+                    <mat-card-content>
+                        <p class="truncate">{{q.description}}</p>
+                    </mat-card-content>
+                    
+                    <mat-card-actions>
+                        <button mat-raised-button   color="accent" >Start Quiz</button>
+                        <button mat-raised-button   color="primary" >view</button>
+                        <button mat-button   color="accent" >Questions {{q.numberOfQuestions}}</button>
+                        
+                    </mat-card-actions>
+
+                    
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+</div>

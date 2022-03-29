@@ -1,0 +1,78 @@
+<h2>Add Questions to {{ qtitle }}</h2>
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container text-center">
+            <button [routerLink]="'/admin/add-questions/'+qid+'/'+qtitle" mat-fab color="accent" aria-label="Example icon button with a add icon">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <mat-card *ngFor=" let q of questions  | paginate:{
+                itemsPerPage: 5,
+                currentPage: page,
+                totalItems: total_length
+            }; let i =index " style="margin-top: 10px">
+                <mat-card-content>
+                    <h3>
+                        <p>
+                            <b style="color: rgb(226, 5, 123)">Q {{i+1 }}) &nbsp;</b>
+                            <b><span [innerHTML]="q.content" style="color: rgb(226, 5, 123)">
+                                </span></b>
+                        </p>
+                    </h3>
+
+                    <div class="container-fluid" style="margin-top: 10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    <b>A) {{ q.option1 }}</b>
+                                </p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p>
+                                    <b>B) {{ q.option2 }}</b>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    <b>C) {{ q.option3 }}</b>
+                                </p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p>
+                                    <b>D) {{ q.option4 }}</b>
+                                </p>
+                            </div>
+                        </div>
+
+                        <mat-divider></mat-divider>
+                        <p style=" color: rgb(226, 5, 123); margin-top: 10px">
+                            <b>
+                               Correct Answer :&nbsp; <span style="color: rgb(56, 197, 0);"> {{ q.answer }}</span>
+                            </b>
+                        </p>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button  mat-button (click)="deleteQuestion(q.qesId)" color="warn">Delete</button>
+                    
+                </mat-card-actions>
+
+            </mat-card>
+
+            <pagination-controls class="text-center" (pageChange)="page = $event"
+               
+            (pageBoundsCorrection)="page=($event)"
+                previousLabel="Previous"
+                      nextLabel="Next"
+            ></pagination-controls>
+            
+            `
+        </div>
+    </div>
+</div>

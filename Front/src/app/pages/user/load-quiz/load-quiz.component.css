@@ -1,0 +1,12 @@
+.truncate{
+    max-width: 100%;
+    white-space: nowrap;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+.example-header-image{
+    background-image: url('../../../../assets/quiz_.png');
+    background-size: cover;
+    
+}
