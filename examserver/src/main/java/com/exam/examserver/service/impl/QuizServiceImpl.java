@@ -6,6 +6,7 @@ import com.exam.examserver.repo.QuizRepository;
 import com.exam.examserver.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -48,4 +49,20 @@ public class QuizServiceImpl implements QuizService {
     public List<Quiz> getQuizzesOfCategory(Category category) {
         return this.quizRepository.findByCategory(category);
     }
+
+    @Override
+    public List<Quiz> getActiveQuizzes() {
+        return this.quizRepository.findByActive(true);
+    }
+
+    @Override
+    public List<Quiz> getActiveQuizzesOfCategory(Category category) {
+        return this.quizRepository.findByCategoryAndActive(category,true);
+    }
+
+
+
+    // get active quizzes
+
+
 }

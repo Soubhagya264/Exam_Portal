@@ -21,7 +21,7 @@ quizzes:any;
     this._route.params.subscribe(params=>{
       this.catId = params['catId'];
       if(this.catId==0){
-        this._quiz.quizess().subscribe(
+        this._quiz.getActiveQuizzes().subscribe(
   
           data=>{
             this.quizzes=data;
