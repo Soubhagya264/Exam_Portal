@@ -14,42 +14,52 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { StartComponent } from './pages/user/start/start.component';
 import { UserdashboardComponent } from './pages/user/userdashboard/userdashboard.component';
 import { AdminGuard } from './services/admin.guard';
 import { NormalGuard } from './services/normal.guard';
-
-
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  {path:"admin",component:DashboardComponent,canActivate:[AdminGuard],
-  children:[
-    {path:"profile",component:ProfileComponent},
-    {path:"",component:WelcomeComponent},
-    {path:"categories",component:ViewCategoriesComponent},
+  {
+    path: 'admin',
+    component: DashboardComponent,
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'profile', component: ProfileComponent },
+      { path: '', component: WelcomeComponent },
+      { path: 'categories', component: ViewCategoriesComponent },
 
-    {path:'add-categories',component:AddCategoriesComponent},
-    {path:'dialog',component:DialogAddcategoryComponent},
-    {path:"quizes",component:ViewQuizesComponent},
-    {path:"add-quiz",component:AddQuizComponent},
-    {path:"quiz/:qid",component:UpdateQuizComponent},
-    {path:"view-questions/:qid/:title",component:ViewQuizQuestionsComponent},
-    {
-      path:"add-questions/:qid/:title",component:AddQuestionsComponent
-    } 
-  
-  ]
-  },  //admin/dashboard
-  {path:"user-dashboard",component:UserdashboardComponent,canActivate:[NormalGuard],
-   children:[
-     {path:':catId',component:LoadQuizComponent}
-   ]
-
- 
-}
+      { path: 'add-categories', component: AddCategoriesComponent },
+      { path: 'dialog', component: DialogAddcategoryComponent },
+      { path: 'quizes', component: ViewQuizesComponent },
+      { path: 'add-quiz', component: AddQuizComponent },
+      { path: 'quiz/:qid', component: UpdateQuizComponent },
+      {
+        path: 'view-questions/:qid/:title',
+        component: ViewQuizQuestionsComponent,
+      },
+      {
+        path: 'add-questions/:qid/:title',
+        component: AddQuestionsComponent,
+      },
+    ],
+  }, //admin/dashboard
+  {
+    path: 'user-dashboard',
+    component: UserdashboardComponent,
+    canActivate: [NormalGuard],
+    children: [
+      { path: ':catId', component: LoadQuizComponent },
+      { path: 'instructions/:qid', component: InstructionsComponent },
+      
+    ],
+  },
+  {path:'start/:qid',component:StartComponent,canActivate: [NormalGuard]}
 ];
 
 @NgModule({

@@ -21,7 +21,7 @@
                     </mat-card-content>
                     
                     <mat-card-actions>
-                        <button mat-raised-button   color="accent" >Start Quiz</button>
+                        <button mat-raised-button   color="accent" [routerLink]="'/user-dashboard/instructions/'+q.qid" >Start Quiz</button>
                         <button mat-raised-button   color="primary" >view</button>
                         <button mat-button   color="accent" >Questions {{q.numberOfQuestions}}</button>
                         

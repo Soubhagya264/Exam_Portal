@@ -1,0 +1,108 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card style="margin-top: 20px; margin-bottom:10px;">
+                    <mat-card-header>
+
+                        <mat-card-title>
+                            <b style="color:rgb(250, 15, 144)" class="text-center"> Read the instructions carefully before starting the quiz</b>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            One step more to start
+                        </mat-card-subtitle>
+
+                    </mat-card-header>
+
+                    <mat-card-content style="margin-left: 20px;">
+                        <h3><b>{{quizzes.title}}</b></h3>
+                        <p>{{quizzes.description}}</p>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <h3 style="color:rgb(250, 15, 144)">Important instruction </h3>
+
+                        <p>
+                            This quiz consists of {{quizzes.numberOfQuestions}} multiple-choice questions. To be
+                            successful with the quizzes, it’s important to thoroughly read the
+                             topics. It will also be extremely useful to study the
+                            key terms at the end of the chapter and review the Test Your Knowledge activity at the end
+                            of the chapter. Keep the following in mind:
+                        </p>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    The quiz is timed. You have <b>{{quizzes.numberOfQuestions*2}} </b> minutes to
+                                    complete the quiz.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    You can take the quiz multiple times.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    There is <b> {{quizzes.numberOfQuestions}}</b> questions.
+                                </p>
+                            </li>
+
+                            <li>
+                                <p>
+                                    This quiz consists of <b>multiple choice questions</b> .
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    The result of the quiz will be displayed on the screen after finish the quiz.
+                                </p>
+                            </li>
+
+                            <li>
+                                <p>
+                                    Each question carries <b> {{quizzes.maxMarks/quizzes.numberOfQuestions}} </b> marks.
+                                    No negative marks will be awarded.
+                                </p>
+                            </li>
+
+
+                        </ul>
+
+                    
+                    <mat-divider></mat-divider>
+                    <br>
+
+                    <h3 style="color:rgb(250, 15, 144)">Attempting Quiz</h3>
+                    <ul>
+                        <li>
+                            Click on the <b>Start Quiz</b> button to start the quiz.
+                        </li>
+                        <li>
+                            The time will start counting down after clicking on the <b>Start Quiz</b> button.
+                        </li>
+                        <li>
+                            You can not resume the quiz if you have not finished it.
+                        </li>
+                        <li>
+                            You can not go back to the previous question after clicking on the <b>Next</b> button.
+                        </li>
+                        <li>
+                            Report of the test will be displayed after clicking on the <b>Finish</b> button.
+                        </li>
+                    </ul>
+                </mat-card-content>
+                    <mat-card-actions class="text-center">
+                        <button mat-raised-button color="accent" (click)="StartQuiz()">Start Quiz</button>
+
+                    </mat-card-actions>
+                    
+
+
+
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+
+</div>
