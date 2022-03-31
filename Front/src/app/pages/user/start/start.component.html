@@ -1,57 +1,60 @@
 <div class="bootstrap-wrapper">
     <div class="container-fluid">
         <div class="row">
-        <div class="col-md-2">
-            <!-- instructions -->
-            <h2>Instructions</h2>
-        </div>
-        <div class="col-md-8">
-            <!-- questions -->
-            <ng-container *ngIf="question">
-                <h2>
-                    On going quiz <b> {{question[0].quiz.title}}</b>
-                </h2>
+            <div class="col-md-2">
+                <!-- instructions -->
+                <h2>Instructions</h2>
+            </div>
+            <div class="col-md-8">
+                <!-- questions -->
+                <ng-container *ngIf="question">
+                    <h2>
+                        On going quiz <b> {{question[0].quiz.title}}</b>
+                    </h2>
 
-            </ng-container>
-            <mat-card *ngFor="let q of question;let i=index" style="margin-top:10px;">
-                <mat-card-content>
-                    <h3>
-                        <b><span [innerHTML]="'Q) '+q.content" style="color: rgb(226, 5, 123)"></span></b>
-                    </h3>
-                    <mat-divider></mat-divider>
+                </ng-container>
+                <mat-card *ngFor="let q of question;let i=index" style="margin-top:10px;">
+                    <mat-card-content>
+                        <h3>
+                            <b><span [innerHTML]="'Q) '+q.content" style="color: rgb(226, 5, 123)"></span></b>
+                        </h3>
+                        <mat-divider></mat-divider>
 
-                    <div class="row" style="margin-top:30px;">
-                        <div class="col-md-6">
-                            <span><b><input type="radio" [value]="q.option1" [name]="i">
-                            <label [innerHTML]="q.option1"></label></b></span>
+                        <div class="row" style="margin-top:30px;">
+                            <div class="col-md-6">
+                                <span><b><input type="radio" [value]="q.option1" [name]="i">
+                                        <label [innerHTML]="q.option1"></label></b></span>
+                            </div>
+                            <div class="col-md-6">
+                                <span><b> <input type="radio" [value]="q.option2" [name]="i">
+                                        <label [innerHTML]="q.option2"></label></b></span>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                           <span><b> <input type="radio" [value]="q.option2" [name]="i">
-                            <label [innerHTML]="q.option2"></label></b></span>
-                    </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <span><b><input type="radio" [value]="q.option3" [name]="i">
-                            <label [innerHTML]="q.option3"></label></b></span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span><b><input type="radio" [value]="q.option3" [name]="i">
+                                        <label [innerHTML]="q.option3"></label></b></span>
+                            </div>
+                            <div class="col-md-6">
+                                <span><b> <input type="radio" [value]="q.option4" [name]="i">
+                                        <label [innerHTML]="q.option4"></label></b></span>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                           <span><b> <input type="radio" [value]="q.option4" [name]="i">
-                            <label [innerHTML]="q.option4"></label></b></span>
-                    </div>
-                    </div>    
-                   
-                </mat-card-content>
 
-            </mat-card>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+
+            <div class="col-md-2">
+
+                <video style="width:220px; height:220px;
+             box-shadow:1px 1px 1px 1px black; 
+             margin-top:10px;" id="vidio" autoplay></video>
+
+            </div>
+
+
         </div>
-
-        <div class="col-md-2">
-            <!-- progress -->
-
-        </div>
-
-
-    </div>
     </div>
 </div>

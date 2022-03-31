@@ -20,12 +20,26 @@ export class StartComponent implements OnInit {
     private snack:MatSnackBar,
     private router:Router) { }
   
-
+vidioRef:any;
   ngOnInit(): void {
+    this.vidioRef = document.getElementById('vidio');
+
+
+
     this.preventBackButton();
     this.fullscreen();
+    this.setupCamera();
     this.qid=this._route.snapshot.params['qid'];
     this.loadQuestion();
+  }
+  setupCamera(){
+    navigator.mediaDevices.getUserMedia({video:true,audio:false}).then(stream=>{
+      this.vidioRef.srcObject = stream;
+      this.vidioRef.play();
+    }
+    ).catch(err=>{
+      console.log(err);
+    });
   }
   elem = document.documentElement;
   fullscreen(){
