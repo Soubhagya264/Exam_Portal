@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -43,6 +44,9 @@ public class UserController {
 
         return this.userService.creatUser(user,roles);
     }
+
+    
+
 
     @GetMapping("/{username}")
     public  User getUser(@PathVariable("username") String username){

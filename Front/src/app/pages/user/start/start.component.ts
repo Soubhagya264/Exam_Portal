@@ -41,25 +41,31 @@ export class StartComponent implements OnInit {
     
   ) {}
 
-  vidioRef: any;
+  vidioRef:any;
   ngOnInit(): void {
-    this.vidioRef = document.getElementById("video");
+    this.vidioRef = document.getElementsByClassName("video");
     console.log(this.vidioRef);
 
     this.preventBackButton();
-    //this.fullscreen();
-    //this.setupCamera();
+    this.fullscreen();
+    this.setupCamera();
     this.qid = this._route.snapshot.params['qid'];
     this.loadQuestion();
   }
   setupCamera() {
+    this.vidioRef=document.getElementsByClassName("video");
+    
     navigator.mediaDevices.getUserMedia({
       video:{width:300,height:300},
       audio:false
     }).then(stream=>{
       console.log(stream)
       this.vidioRef.srcObject=stream;
+      this.vidioRef.play();
+      
+      
     })
+  
     
   }
   elem = document.documentElement;
