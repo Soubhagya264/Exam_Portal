@@ -1,5 +1,7 @@
 package com.exam.examserver.model;
 
+import com.exam.examserver.model.Exam.Questions;
+import com.exam.examserver.model.Exam.Results;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,6 +41,19 @@ public class User implements UserDetails {
     public User() {
 
     }
+
+    public Set<Results> getUserResults() {
+        return userResults;
+    }
+
+    public void setUserResults(Set<Results> userResults) {
+        this.userResults = userResults;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    @JsonIgnore
+    private Set<Results> userResults =new HashSet<>();
+
     public Long getId() {
         return id;
     }

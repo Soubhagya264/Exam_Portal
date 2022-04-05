@@ -28,6 +28,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
     this._question.getQuestionsQuiz(this.qid).subscribe(
       (data) => {
         this.questions = data;
+        console.log(this.questions);
         // get index of first question
         for (let i = 1; i <= this.questions.length; i++) {
           this.index.push(i);

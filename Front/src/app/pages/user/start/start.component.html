@@ -1,60 +1,226 @@
-<div class="bootstrap-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <!-- instructions -->
-                <h2>Instructions</h2>
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!-- instructions -->
+        <h2>Instructions</h2>
+        <mat-card>
+          <mat-card-content>
+            <ul>
+              <li>
+                Do not refresh the page.
+              </li>
+              <li>
+                Do not switch tabs.
+              </li>
+              <li>
+                Do not minimize the browser.
+              </li>
+              
+            </ul>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+      <div class="col-md-8">
+        <!-- questions -->
+        <ng-container *ngIf="question">
+          <h2>
+            On going quiz <b> {{ question[0].quiz.title }}</b>
+          </h2>
+        </ng-container>
+        <mat-card
+          *ngFor="let q of question; let i = index"
+          style="margin-top: 10px"
+        >
+          <mat-card-content>
+            <h3>
+              <b
+                ><span
+                  [innerHTML]="'Q) ' + q.content"
+                  style="color: rgb(226, 5, 123)"
+                ></span
+              ></b>
+            </h3>
+            <mat-divider></mat-divider>
+
+            <div class="row" style="margin-top: 30px">
+              <div class="col-md-6">
+                <span
+                  ><b
+                    ><input
+                      type="radio"
+                      [value]="q.option1"
+                      name="{{ i }}"
+                      [(ngModel)]="q.givenAnswer" />
+                    <label [innerHTML]="q.option1"></label></b
+                ></span>
+              </div>
+              <div class="col-md-6">
+                <span
+                  ><b>
+                    <input
+                      type="radio"
+                      [value]="q.option2"
+                      name="{{ i }}"
+                      [(ngModel)]="q.givenAnswer" />
+                    <label [innerHTML]="q.option2"></label></b
+                ></span>
+              </div>
             </div>
-            <div class="col-md-8">
-                <!-- questions -->
-                <ng-container *ngIf="question">
-                    <h2>
-                        On going quiz <b> {{question[0].quiz.title}}</b>
-                    </h2>
-
-                </ng-container>
-                <mat-card *ngFor="let q of question;let i=index" style="margin-top:10px;">
-                    <mat-card-content>
-                        <h3>
-                            <b><span [innerHTML]="'Q) '+q.content" style="color: rgb(226, 5, 123)"></span></b>
-                        </h3>
-                        <mat-divider></mat-divider>
-
-                        <div class="row" style="margin-top:30px;">
-                            <div class="col-md-6">
-                                <span><b><input type="radio" [value]="q.option1" [name]="i">
-                                        <label [innerHTML]="q.option1"></label></b></span>
-                            </div>
-                            <div class="col-md-6">
-                                <span><b> <input type="radio" [value]="q.option2" [name]="i">
-                                        <label [innerHTML]="q.option2"></label></b></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span><b><input type="radio" [value]="q.option3" [name]="i">
-                                        <label [innerHTML]="q.option3"></label></b></span>
-                            </div>
-                            <div class="col-md-6">
-                                <span><b> <input type="radio" [value]="q.option4" [name]="i">
-                                        <label [innerHTML]="q.option4"></label></b></span>
-                            </div>
-                        </div>
-
-                    </mat-card-content>
-
-                </mat-card>
+            <div class="row">
+              <div class="col-md-6">
+                <span
+                  ><b
+                    ><input
+                      type="radio"
+                      name="{{ i }}"
+                      [value]="q.option3"
+                      [(ngModel)]="q.givenAnswer" />
+                    <label [innerHTML]="q.option3"></label></b
+                ></span>
+              </div>
+              <div class="col-md-6">
+                <span
+                  ><b>
+                    <input
+                      type="radio"
+                      name="{{ i }}"
+                      [value]="q.option4"
+                      [(ngModel)]="q.givenAnswer" />
+                    <label [innerHTML]="q.option4"></label></b
+                ></span>
+              </div>
             </div>
-
-            <div class="col-md-2">
-
-                <video style="width:220px; height:220px;
-             box-shadow:1px 1px 1px 1px black; 
-             margin-top:10px;" id="vidio" autoplay></video>
-
-            </div>
-
-
+          </mat-card-content>
+        </mat-card>
+        <div class="row" style="margin-top: 30px">
+          <div class="col-md-12 text-center">
+            <button mat-raised-button color="primary" (click)="submitQuiz()">
+              Submit
+            </button>
+           
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-2">
+        <video id="video"></video>
+        
+
+        <div style="margin-top:20px; margin-right:30px;">
+            <mat-card class="text-center"  >
+                <mat-card-title>
+                    Progress
+                </mat-card-title>
+                <mat-card-subtitle>
+                    Quiz will be automatically submitted after timer reaches to 0.0
+                </mat-card-subtitle>
+                <h3>{{getFormattedTime()}}</h3>
+          <mat-progress-spinner style="margin: auto;"
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="(value/(question.length*2*60))*100"
+          >
+          </mat-progress-spinner>
+        </mat-card>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- show the result -->
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <mat-card style="margin-top: 50px">
+        <mat-card-header>
+          {{ result | json }}
+          <mat-card-title>Quiz Result of  the {{user.username}}  </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <h3>
+            <span>
+              <b>Marks Got</b> :
+              <b>
+                <span
+                  [innerHTML]="'  ' + questions.marksGot"
+                  style="color: rgb(20, 255, 44)"
+                ></span>
+              </b>
+            </span>
+          </h3>
+          <h3>
+            <span>
+              <b>Total Marks</b> :
+              <b>
+                <span
+                  [innerHTML]="'  ' + question[0].quiz.maxMarks"
+                  style="color: rgb(226, 5, 123)"
+                ></span>
+              </b>
+            </span>
+          </h3>
+          <h3>
+            <span>
+              <b>Percentage</b> :
+              <b>
+                <span
+                  [innerHTML]="
+                    '  ' + (questions.marksGot / question[0].quiz.maxMarks) * 100 + '%'
+                  "
+                  style="color: rgb(226, 5, 123)"
+                ></span>
+              </b>
+            </span>
+          </h3>
+
+          <h3>
+            <span>
+              <b>Correct Answers :</b>
+              <b>
+                <span
+                  [innerHTML]="'  ' + questions.correctAnswer"
+                  style="color: rgb(20, 255, 44)"
+                ></span>
+              </b>
+            </span>
+          </h3>
+          <h3>
+            <span
+              ><b>Wrong Answers :</b>
+              <b>
+                <span
+                  [innerHTML]="'  ' + questions.wrongAnswer"
+                  style="color: rgb(255, 0, 0)"
+                ></span>
+              </b>
+            </span>
+          </h3>
+          <h3>
+            <span
+              ><b> Questions Attempted :</b>
+              <b>
+                <span
+                  [innerHTML]="'  ' + questions.attempted"
+                  style="color: rgb(55, 255, 0)"
+                ></span>
+              </b>
+            </span>
+          </h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            [routerLink]="'/user-dashboard/0'"
+          >
+            Home
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 </div>

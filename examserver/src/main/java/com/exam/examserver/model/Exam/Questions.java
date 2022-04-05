@@ -1,5 +1,9 @@
 package com.exam.examserver.model.Exam;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonMerge;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -96,6 +100,18 @@ public class Questions {
     private  String option3;
     private  String option4;
 
+
     private  String answer;
+
+    public String getGivenAnswer() {
+        return givenAnswer;
+    }
+
+    public void setGivenAnswer(String givenAnswer) {
+        this.givenAnswer = givenAnswer;
+    }
+
+    @Transient
+    private  String givenAnswer;
 
 }

@@ -37,6 +37,7 @@ export class AddQuestionsComponent implements OnInit {
     if (this.qid) {
       this.question.quiz['qid'] = this.qid;
     }
+    console.log(this.question);
   }
 
   //form submit
