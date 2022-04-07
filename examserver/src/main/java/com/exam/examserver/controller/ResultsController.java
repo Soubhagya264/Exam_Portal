@@ -37,4 +37,11 @@ public class ResultsController {
         Set<Results> resultsSet=this.resultsService.getResultsOfUser(user);
         return ResponseEntity.ok(resultsSet);
     }
+
+    @GetMapping("/all-results")
+    public ResponseEntity<?> getResults(){
+        return ResponseEntity.ok(this.resultsService.getResults());
+    }
+
+
 }

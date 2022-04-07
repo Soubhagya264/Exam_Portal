@@ -15,4 +15,9 @@ export class UserService {
   public adduser(user:any){
     return this.http.post(`${baseUrl}user/`,user);
   }
+// get all users
+  public getAllUsers(){
+    return this.http.get(`${baseUrl}user/all-users`);
+  }
+
 }

@@ -1,5 +1,6 @@
 package com.exam.examserver.service.impl;
 
+import com.exam.examserver.model.Exam.Category;
 import com.exam.examserver.model.User;
 import com.exam.examserver.model.UserRole;
 import com.exam.examserver.repo.RoleRepository;
@@ -8,6 +9,7 @@ import com.exam.examserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Service
@@ -45,5 +47,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long userId) {
         this.userRepository.deleteById(userId);
+    }
+
+    @Override
+    public Set<User> getUsers() {
+        return new LinkedHashSet<>(this.userRepository.findAll());
     }
 }

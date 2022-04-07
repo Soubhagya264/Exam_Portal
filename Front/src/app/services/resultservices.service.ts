@@ -20,4 +20,10 @@ public getResultsOfUser(uid:any){
   return this._http.get(`${baseUrl}results/all/${uid}`);
 }
 
+// get all-results
+
+  public getAllResults(){
+    return this._http.get(`${baseUrl}results/all-results`);
+  }
+
 }

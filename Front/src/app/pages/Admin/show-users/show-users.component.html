@@ -1,0 +1,49 @@
+<mat-card *ngIf="user">
+    <h2>Users</h2>
+    <mat-card-content *ngFor="let u of user">
+      <div class="bootstrap-wrapper">
+        <div class="container">
+            
+          <div class="row" >
+            <div class="col-md-10 offset-md-1">
+  
+              <table class="table text-center" >
+                  <tr>
+                    
+                      <td>Username</td>
+                      <td>{{u.username}}</td>
+                    
+                  </tr>
+                  <tr>
+                      <td>UserId</td>
+                      <td>Exam{{u.id}}</td>
+                  </tr>
+                  <tr *ngIf="u.phone">
+                      <td>Contact</td>
+                      <td>{{u.phone}}</td>
+                  </tr>
+  
+                  <tr>
+                      <td>Role</td>
+                      <td>{{u.authorities[0].authority}}</td>
+                  </tr>
+  
+                  <tr>
+                      <td>Status</td>
+                      <td>{{u.enabled? "ACTIVE":"NOT ACTIVE"}}</td>
+                  </tr>
+                  
+              </table>
+              
+ 
+            </div>
+          </div>
+          <hr class="new">
+        </div>
+      </div>
+    </mat-card-content>
+   
+  
+  </mat-card>
+  
+  

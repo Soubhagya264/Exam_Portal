@@ -5,6 +5,8 @@ import { AddQuestionsComponent } from './pages/Admin/add-questions/add-questions
 import { AddQuizComponent } from './pages/Admin/add-quiz/add-quiz.component';
 import { DashboardComponent } from './pages/Admin/dashboard/dashboard.component';
 import { DialogAddcategoryComponent } from './pages/Admin/dialog-addcategory/dialog-addcategory.component';
+import { ShowResultsComponent } from './pages/Admin/show-results/show-results.component';
+import { ShowUsersComponent } from './pages/Admin/show-users/show-users.component';
 import { UpdateQuizComponent } from './pages/Admin/update-quiz/update-quiz.component';
 import { ViewCategoriesComponent } from './pages/Admin/view-categories/view-categories.component';
 import { ViewQuizQuestionsComponent } from './pages/Admin/view-quiz-questions/view-quiz-questions.component';
@@ -34,7 +36,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: '', component: WelcomeComponent },
       { path: 'categories', component: ViewCategoriesComponent },
-
+      {path:'show-users',component:ShowUsersComponent},
       { path: 'add-categories', component: AddCategoriesComponent },
       { path: 'dialog', component: DialogAddcategoryComponent },
       { path: 'quizes', component: ViewQuizesComponent },
@@ -48,6 +50,10 @@ const routes: Routes = [
         path: 'add-questions/:qid/:title',
         component: AddQuestionsComponent,
       },
+      {
+        path:'show-results',
+        component:ShowResultsComponent
+      }
     ],
   }, //admin/dashboard
   {

@@ -46,6 +46,8 @@ import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { AttemptedQuizzesComponent } from './pages/user/attempted-quizzes/attempted-quizzes.component';
+import { ShowUsersComponent } from './pages/Admin/show-users/show-users.component';
+import { ShowResultsComponent } from './pages/Admin/show-results/show-results.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { AttemptedQuizzesComponent } from './pages/user/attempted-quizzes/attemp
     InstructionsComponent,
     StartComponent,
     AttemptedQuizzesComponent,
+    ShowUsersComponent,
+    ShowResultsComponent,
 
     
 

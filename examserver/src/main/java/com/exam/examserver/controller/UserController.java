@@ -5,6 +5,7 @@ import com.exam.examserver.model.User;
 import com.exam.examserver.model.UserRole;
 import com.exam.examserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class UserController {
         return this.userService.creatUser(user,roles);
     }
 
-    
+
 
 
     @GetMapping("/{username}")
@@ -56,6 +57,16 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public  void deleteUser(@PathVariable("userId") Long userId){
         this.userService.deleteUser(userId);
+    }
+
+    @GetMapping("/all-users")
+    public ResponseEntity<?> getUsers(){
+        return ResponseEntity.ok(this.userService.getUsers());
+    }
+
+    @GetMapping("/test")
+    public String test(){
+        return "Welcome to backend API";
     }
 
 

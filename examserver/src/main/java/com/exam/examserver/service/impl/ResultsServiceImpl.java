@@ -7,6 +7,8 @@ import com.exam.examserver.service.ResultsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 @Service
 public class ResultsServiceImpl implements ResultsService {
@@ -23,5 +25,10 @@ public class ResultsServiceImpl implements ResultsService {
     @Override
     public Set<Results> getResultsOfUser(User user) {
         return this.resultsRepository.findByUser(user);
+    }
+
+    @Override
+    public List<Results> getResults() {
+        return new ArrayList<>(this.resultsRepository.findAll());
     }
 }

@@ -1,0 +1,43 @@
+
+      <div class="bootstrap-wrapper">
+        <div class="container">
+            <div class="container text-center">
+                <h2><b>Attempted Quizzes</b></h2>
+            </div>
+          
+            
+            <mat-card style="margin-top: 10px;" *ngFor="let r of result">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title style="margin-top:5px;">{{r.user.firstName}} &nbsp;{{r.user.lastName}}</mat-card-title>
+                
+                
+                <mat-card-subtitle style="margin-top: 5px;">
+                    {{r.user.username}}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content style="margin-left:10px;">
+                <b><p>Quiz Name : {{r.quizName}}</p></b>
+                <mat-card-subtitle>
+                    <b>Quiz Category : {{r.quizCategory}}</b>
+                </mat-card-subtitle>
+                <b><p > Attempted &nbsp;  Date : {{r.lastUpdate}}</p></b>
+            </mat-card-content>
+                
+                
+                <mat-card-actions>
+                    
+                    <button mat-button   color="primary" >Total Marks :{{r.totalMarks}}</button>
+                    <button mat-button   style="color:rgb(3, 181, 18)" >Marks got : {{r.marksGot}}</button>
+                    <button mat-button   color="primary" >Attempted : {{r.attempted}}</button> 
+                    <button mat-button   style="color:rgb(3, 181, 18)" >CorrectAnswer : {{r.correctAnswer}}</button>
+                    <button mat-button   color="accent" >wrongAnswer : {{r.wrongAnswer}}</button>
+                    <button mat-button   color="primary" >Percentage :{{r.percentage}}</button>  
+                    
+                   
+                </mat-card-actions>
+            </mat-card>
+        </div>
+      </div>
+
+
